@@ -7,7 +7,7 @@ import sqlite3
 
 #MQTT 連線設定
 host = '192.168.0.21'  # 設定用'' 文字用""
-topic = 'IAQ/MonitoringData'  # 之後要拆成控制用topic, 資料用topic, 測試用topic
+topic = 'IAQ/+'  # 之後要拆成控制用topic, 資料用topic, 測試用topic
 client_id ='pi'  # 放設備ID
 
 database = os.path.join(os.path.abspath('.')+"/db.sqlite3")
@@ -20,10 +20,10 @@ def MQTT_sub():
     rTopic = sub_simple.topic
     rMessage = sub_simple.payload.decode()
 
-    if len(rMessage) > 100:
-        print("len :{}".format(len(rMessage)))
-        print("type :{}".format(type(rMessage)))
-        #print(rMessage)
+    if len(rMessage) > 100 and rTopic == 'IAQ/MonitoringData':
+        # print("len :{}".format(len(rMessage)))
+        # print("type :{}".format(type(rMessage)))
+        # print(rMessage)
         save2DB(rMessage)
     else:
         print("len :{}".format(len(rMessage)))
@@ -123,4 +123,5 @@ def insert_data(table_tuple, data_tuple , table):
 # 執行(放在最下面)
 if __name__ == "__main__":
     while run:
+        print("Topic: {}".format(topic))
         MQTT_sub()
