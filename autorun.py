@@ -107,6 +107,7 @@ def listID():
     except Exception as err:
         print("get ID list fail ：{}".format(err))
 
+
 def insert_data(table_tuple, data_tuple , table):
     try:
         # open sqlite3

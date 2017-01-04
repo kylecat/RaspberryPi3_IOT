@@ -14,8 +14,17 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
+from django.conf.urls.static import static
 from django.contrib import admin
+from django.conf import settings
+from main import views
+from MQTT import views as MQTT_views
+
+app_name = 'MQTT'
 
 urlpatterns = [
+    url(r'^$', views.index, name='index'),
+    url(r'^MQTT/$', MQTT_views.index, name='index'),
     url(r'^admin/', admin.site.urls),
-]
+
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

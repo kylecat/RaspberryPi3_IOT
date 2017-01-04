@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} MQTT {% endblock %}
+
+{% block body_block %}
+    <H1>Hello !!  My Raspberry Pi IOT System</H1>
+    <p>您現在的位置在{{ path }}</p>
+    {% for s in sensor %}
+        <H2>{{ s.sensor_id }}</H2>
+    {% endfor %}
+{% endblock %}
