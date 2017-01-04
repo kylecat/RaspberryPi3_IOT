@@ -147,6 +147,8 @@
     <script src="{% static 'js/nprogress.js' %}"></script>
     <!-- Chart.js -->
     <script src="{% static 'js/Chart.min.js' %}"></script>
+    <!-- ECharts -->
+    <script src="{% static 'js/echarts.min.js' %}"></script>
     <!-- jQuery Sparklines -->
     <script src="{% static 'js/jquery.sparkline.min.js' %}"></script>
     <!-- morris.js -->
@@ -228,6 +230,7 @@
 			fullscreenchange();
 		});
 		</script>
+        {% block scipt %}{% endblock %}
     </div>
   </body>
 </html>
